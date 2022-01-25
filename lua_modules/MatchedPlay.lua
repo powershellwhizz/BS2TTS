@@ -200,7 +200,6 @@ function onScriptingButtonDown(index, playerColor)
     if isHoveringValidTarget then scriptingFunctions[index](playerColor, hoveredObject, player) end
 end
 
-
 function onObjectDrop(playerColor, droppedObject)
     if not self.hasTag("leaderModel") then return end -- prevents firing on objects we don't want firing
     if isCurrentlyCheckingCoherency and
@@ -423,6 +422,7 @@ function buildUI()
     buildXMLForSection("abilities")
     buildXMLForSection("models")
     buildXMLForSection("weapons")
+    buildXMLForSection("rules")
 
     if unitData.psykerProfiles ~= nil then
         buildXMLForSection("powersKnown")

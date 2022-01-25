@@ -28,6 +28,15 @@ local uiTemplates = {
                     <Cell><Text class="ym-smallText">${d}</Text></Cell>
                     <Cell><Text class="ym-resizingText">${abilities}</Text></Cell>
                 </Row>]],
+    rules = [[ <Row class="${rowParity}" preferredHeight="60">
+                    <Cell><Text class="ym-resizingSmallBold">${name}</Text></Cell>
+                    <Cell><Text class="ym-resizingText">${range}</Text></Cell>
+                    <Cell><Text class="ym-resizingText">${type}</Text></Cell>
+                    <Cell><Text class="ym-smallText">${s}</Text></Cell>
+                    <Cell><Text class="ym-smallText">${ap}</Text></Cell>
+                    <Cell><Text class="ym-smallText">${d}</Text></Cell>
+                    <Cell><Text class="ym-resizingText">${abilities}</Text></Cell>
+                </Row>]],
     powersKnown = [[<Row class="${rowParity}" preferredHeight="100">
                         <Cell><Text class="ym-resizingSmallBold">${name}</Text></Cell>
                         <Cell><Text class="ym-smallText">${warpCharge}</Text></Cell>

@@ -92,6 +92,15 @@ local uiTemplates = {
                     <Cell><Text fontStyle="Normal" fontSize="18" alignment="MiddleCenter">${d}</Text></Cell>
                     <Cell><Text fontStyle="Normal" resizeTextForBestFit="true" resizeTextMinSize="6" resizeTextMaxSize="20" alignment="MiddleCenter">${abilities}</Text></Cell>
                 </Row>]],
+    rules = [[ <Row color="${rowParity}" dontUseTableRowBackground="true" preferredHeight="60">
+                    <Cell><Text resizeTextForBestFit="true" resizeTextMinSize="6" resizeTextMaxSize="20" preferredHeight="20" fontStyle="Bold" alignment="MiddleCenter">${name}</Text></Cell>
+                    <Cell><Text fontStyle="Normal" resizeTextForBestFit="true" resizeTextMinSize="6" resizeTextMaxSize="20" alignment="MiddleCenter">${range}</Text></Cell>
+                    <Cell><Text fontStyle="Normal" resizeTextForBestFit="true" resizeTextMinSize="6" resizeTextMaxSize="20" alignment="MiddleCenter">${type}</Text></Cell>
+                    <Cell><Text fontStyle="Normal" fontSize="18" alignment="MiddleCenter">${s}</Text></Cell>
+                    <Cell><Text fontStyle="Normal" fontSize="18" alignment="MiddleCenter">${ap}</Text></Cell>
+                    <Cell><Text fontStyle="Normal" fontSize="18" alignment="MiddleCenter">${d}</Text></Cell>
+                    <Cell><Text fontStyle="Normal" resizeTextForBestFit="true" resizeTextMinSize="6" resizeTextMaxSize="20" alignment="MiddleCenter">${abilities}</Text></Cell>
+                </Row>]],
     powersKnown = [[<Row color="${rowParity}" dontUseTableRowBackground="true" preferredHeight="100">
                         <Cell><Text resizeTextForBestFit="true" resizeTextMinSize="6" resizeTextMaxSize="20" preferredHeight="20" fontStyle="Bold" alignment="MiddleCenter">${name}</Text></Cell>
                         <Cell><Text fontStyle="Normal" fontSize="18" alignment="MiddleCenter">${warpCharge}</Text></Cell>

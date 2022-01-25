@@ -2,3 +2,4 @@ node_modules/
 files/
 test.txt
 output.json
+*.json
