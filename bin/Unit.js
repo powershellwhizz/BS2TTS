@@ -26,6 +26,7 @@ module.exports = class Unit {
     weapons = {};
     //weapons  = [];
     rules = [];
+    formattedrules = {};
     uuid = crypto.randomBytes(4).toString("hex"); 
     unassignedWeapons = [];
     pl = 0;
@@ -71,6 +72,16 @@ module.exports = class Unit {
                 desc: profileData.characteristics[0].characteristic[0]._.replace(/[\[\]"]/g, m => dangerousReplace[m])
             };
     }
+    addFormattedRule (rule) {
+        const trimmedName = rule.$.name.match(abilityTrimRegex).groups.ability,
+            dangerousReplace = { "[": "(", "]": ")", '"': '\\"' };
+
+        if (!this.formattedrules[trimmedName])
+            this.formattedrules[trimmedName] = { 
+                name: trimmedName.replace(/[\[\]"]/g, m => dangerousReplace[m]), 
+                desc: rule.description[0].replace(/[\[\]"]/g, m => dangerousReplace[m])
+            };
+    }
 
     /**
      * Adds the given data as an ability to the unit.
@@ -86,6 +97,8 @@ module.exports = class Unit {
                 desc: abilityDescription.replace(/[\[\]"]/g, m => dangerousReplace[m])
             };
     }
+
+
 
     addRule (ruleData) {
         let trimmedName = ruleData.$.name.match(abilityTrimRegex).groups.ability;
@@ -352,8 +365,10 @@ module.exports = class Unit {
         }
 
         if (selectionData.rules && selectionData.rules[0] !== "")
-            for (const rule of selectionData.rules[0].rule)
-                this.addRule(rule);
+            for (const rule of selectionData.rules[0].rule){
+                this.addRule(rule)
+                this.addFormattedRule(rule)
+            };
 
         if (selectionData.selections && selectionData.selections[0] !== "")
             for (const selection of selectionData.selections[0].selection)

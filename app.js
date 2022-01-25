@@ -111,7 +111,7 @@ const file = new statik.Server('./site'),
                     pos += data[i].length; 
                 } ;
 
-                if (postURL.pathname === "/format_and_store_army" || postURL.pathname === "/getFormattedArmy") {
+                if (postURL.pathname === "/getFormattedArmy") {
                     try {
                         let zip = new AdmZip(buf),
                             zipEntries = zip.getEntries();
@@ -121,31 +121,6 @@ const file = new statik.Server('./site'),
                                 fs.writeFile("output.json", JSON.stringify(result.roster.forces, null, 4), () =>{})
                                 //parseRos(result.roster.forces);
                                 let armyDataObj = Roster.parse(result.roster.forces);
-
-                                if (postURL.pathname === "/format_and_store_army") {
-                                    armyDataObj.uiHeight = postURL.searchParams.get('uiHeight');
-                                    armyDataObj.uiWidth = postURL.searchParams.get('uiWidth');
-                                    armyDataObj.baseScript = buildScript(postURL.searchParams.get("modules").split(","));
-
-                                    fs.writeFile(`${PATH_PREFIX}${uuid}.json`, 
-                                                JSON.stringify(armyDataObj, replacer)
-                                                    .replace(" & ", " and "), 
-                                                (err) => {
-                                                    let content,status;
-            
-                                                    if (!err) {
-                                                        content = `{ "id": "${uuid}" }`;
-                                                        status = 200;
-                                                    }
-                                                    else {
-                                                        content = `{ "err": "${ERRORS.fileWrite}" }`;
-                                                        status = 500
-                                                    }
-            
-                                                    sendHTTPResponse(res, content, status);
-                                                });
-                                }
-                                else
                                     sendHTTPResponse(res, JSON.stringify(armyDataObj, replacer), 200);
                             });
                     }
