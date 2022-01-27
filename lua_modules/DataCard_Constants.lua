@@ -7,6 +7,10 @@ local uiTemplates = {
                     <Cell><Text class="ym-resizingSmallBold">${name}</Text></Cell>
                     <Cell><Text class="ym-resizingText">${desc}</Text></Cell>
                 </Row>]],
+    formattedrules = [[<Row class="${rowParity}" preferredHeight="80">
+                    <Cell><Text class="ym-resizingSmallBold">${name}</Text></Cell>
+                    <Cell><Text class="ym-resizingText">${desc}</Text></Cell>
+                </Row>]],                
     models = [[ <Row class="${rowParity}" preferredHeight="60">
                     <Cell><Text class="ym-resizingSmallBold">${name}</Text></Cell>
                     <Cell><Text class="ym-smallText">${m}</Text></Cell>
@@ -20,15 +24,6 @@ local uiTemplates = {
                     <Cell><Text class="ym-smallText">${sv}</Text></Cell>
                 </Row>]],
     weapons = [[ <Row class="${rowParity}" preferredHeight="60">
-                    <Cell><Text class="ym-resizingSmallBold">${name}</Text></Cell>
-                    <Cell><Text class="ym-resizingText">${range}</Text></Cell>
-                    <Cell><Text class="ym-resizingText">${type}</Text></Cell>
-                    <Cell><Text class="ym-smallText">${s}</Text></Cell>
-                    <Cell><Text class="ym-smallText">${ap}</Text></Cell>
-                    <Cell><Text class="ym-smallText">${d}</Text></Cell>
-                    <Cell><Text class="ym-resizingText">${abilities}</Text></Cell>
-                </Row>]],
-    rules = [[ <Row class="${rowParity}" preferredHeight="60">
                     <Cell><Text class="ym-resizingSmallBold">${name}</Text></Cell>
                     <Cell><Text class="ym-resizingText">${range}</Text></Cell>
                     <Cell><Text class="ym-resizingText">${type}</Text></Cell>

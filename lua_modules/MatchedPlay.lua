@@ -422,7 +422,8 @@ function buildUI()
     buildXMLForSection("abilities")
     buildXMLForSection("models")
     buildXMLForSection("weapons")
-
+    buildXMLForSection("formattedrules")
+    
     if unitData.psykerProfiles ~= nil then
         buildXMLForSection("powersKnown")
         buildXMLForSection("psykerProfiles")
