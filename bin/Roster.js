@@ -16,12 +16,18 @@ module.exports.parse = (data) => {
 
             return false;
         });
-    
+
         for (let unitData of armyUnitData) {
             let unit = new Unit(unitData.$.name, unitData.$.customName, unitData.$.type === "model");
-    
+            let forceRules = data[0].force[0].rules[0].rule;
             unit.handleSelectionDataRecursive(unitData, null, true);
-    
+
+            for (let forceRule of forceRules) {
+                unit.addFormattedRule(forceRule);
+            };
+            
+
+
             units.set(unit.uuid, unit.update());
         }
     }
@@ -30,6 +36,6 @@ module.exports.parse = (data) => {
 
     for (const uuid of units.keys())
         order.push(uuid);
-    
+
     return { units, order }
 }

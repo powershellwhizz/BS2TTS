@@ -150,32 +150,7 @@ const file = new statik.Server('./site'),
                                             postURL.searchParams.get('decorativeNames'),
                                             buildScript(postURL.searchParams.get("modules").split(",")));
 
-                        /* if (postURL.pathname === "/format_and_store_army") {
-                            armyDataObj.uiHeight = postURL.searchParams.get('uiHeight');
-                            armyDataObj.uiWidth = postURL.searchParams.get('uiWidth');
-                            armyDataObj.baseScript = buildScript(postURL.searchParams.get("modules").split(","))
 
-                            fs.writeFile(`${PATH_PREFIX}${uuid}.json`, 
-                                        JSON.stringify(armyDataObj, replacer)
-                                            .replace(" & ", " and "), 
-                                        (err) => {
-                                            let content,status;
-    
-                                            if (!err) {
-                                                content = `{ "id": "${uuid}" }`;
-                                                status = 200;
-                                            }
-                                            else {
-                                                content = `{ "err": "${ERRORS.fileWrite}" }`;
-                                                status = 500
-                                            }
-    
-                                            sendHTTPResponse(res, content, status);
-                                        });
-                        }
-
-                        else
-                            sendHTTPResponse(res, JSON.stringify(armyDataObj, replacer).replace(" & ", " and "), 200); */
                     }
                     catch (err) {
                         sendHTTPResponse(res, `{ "err": "${ERRORS.unknown}" }`, 500);
@@ -257,8 +232,7 @@ setInterval(() => {
         }
     });
 
-    //let stats = fs.statSync("/dir/file.txt");
-    //let mtime = stats.mtime;
+
 }, ONE_MINUTE);
 
 
@@ -343,12 +317,6 @@ function formatAndStoreXML(id, order, armyData, uiHeight, uiWidth, decorativeNam
             .ele("VerticalLayout", { class: "unitContainer", childForceExpandHeight: "false", preferredHeight: unitData.height, spacing: "20" })
                 .import(unitData.fragment)
 
-        /*  <VerticalLayout class="transparent" childForceExpandHeight="false">
-                <Text class="unitName">${unitName}</Text>
-                <VerticalLayout class="unitContainer" childForceExpandHeight="false" preferredHeight="${height}" spacing="20">
-                    ${unitData}
-                </VerticalLayout>
-            </VerticalLayout> */
     }
 
     storeFormattedXML(id, xml.end({ prettyPrint: false }).slice(27, -7), totalHeight, armyData, uiHeight, uiWidth, baseScript);
@@ -367,16 +335,7 @@ function getUnitXMLData(unit) {
 
     return { fragment, height: maxHeight };
 
-    /*  <HorizontalLayout class="groupingContainer">
-            <VerticalLayout preferredWidth="500" childForceExpandHeight="false" class="modelContainer" id="${unitID}|${modelID}" preferredHeight="${height}">
-                <Text class="modelDataName">${numberString}${modelName}</Text>
-                ${weapons}
-                ${abilities}
-            </VerticalLayout> 
-            .
-            .
-            .
-        </HorizontalLayout>*/
+
 }
 
 function getModelXMLData(model, modelID, unit) {
@@ -410,19 +369,7 @@ function getModelXMLData(model, modelID, unit) {
     container.att("preferredHeight", height);
 
     return { fragment, height };
-    /*  <VerticalLayout preferredWidth="500" childForceExpandHeight="false" class="modelContainer" id="${unitID}|${modelID}" preferredHeight="${height}">
-            <Text class="modelDataName">${numberString}${modelName}</Text>
-            <VerticalLayout childForceExpandHeight="false" childForceExpandWidth="false">
-                <Text height="15"><!-- spacer --></Text>
-                <Text class="modelDataTitle">${weapons?}</Text>
-                <Text class="modelData" preferredHeight="${height}">${data}</Text>
-            </VerticalLayout>
-            <VerticalLayout childForceExpandHeight="false" childForceExpandWidth="false">
-                <Text height="15"><!-- spacer --></Text>
-                <Text class="modelDataTitle">${abilities?}</Text>
-                <Text class="modelData" preferredHeight="${height}">${data}</Text>
-            </VerticalLayout>
-        </VerticalLayout> */
+
 }
 
 function getModelSectionData (name, dataList) {
@@ -437,12 +384,7 @@ function getModelSectionData (name, dataList) {
 
     return { fragment, height };
 
-    /*  <VerticalLayout childForceExpandHeight="false" childForceExpandWidth="false">
-            <Text height="15"><!-- spacer --></Text>
-            <Text class="modelDataTitle">${title}</Text>
-            <Text class="modelData" preferredHeight="${height}">${data}</Text>
-        </VerticalLayout>
-    */
+
 }
 
 function combineAndSortWeapons(model, characteristicProfiles) {
