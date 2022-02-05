@@ -19,15 +19,15 @@ module.exports.parse = (data) => {
 
         for (let unitData of armyUnitData) {
             let unit = new Unit(unitData.$.name, unitData.$.customName, unitData.$.type === "model");
-            let forceRules = data[0].force[0].rules[0].rule;
+
+            if (data[0].force[0].rules) {
+                let forceRules = data[0].force[0].rules[0].rule;
+                for (let forceRule of forceRules) {
+                    unit.addFormattedRule(forceRule);
+                };
+            }
+
             unit.handleSelectionDataRecursive(unitData, null, true);
-
-            for (let forceRule of forceRules) {
-                unit.addFormattedRule(forceRule);
-            };
-            
-
-
             units.set(unit.uuid, unit.update());
         }
     }
